@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int	*fill_array(FILE *fd, int *x, int *y)
+int	*fill_array(FILE *fp, int *x, int *y)
 {
 	int	*array;
 	int	i;
@@ -11,36 +11,47 @@ int	*fill_array(FILE *fd, int *x, int *y)
 	i = 0;
 	array = malloc(50000000);
 	if (!array)
-		return (0);
-	while (array[i] != '\0')
+		return (NULL);
+	while (array[i] != EOF)
 	{
-		array[i] = fgetc(fd);
+		array[i] = fgetc(fp);
+		if (array[i] == EOF)
+			break;
+		//printf("%i -- ", array[i]);
 		if (array[i] == 46)
 			array[i] = 1;
 		if (array[i] == 111)
 			array[i] = 0;
-		write (1, &array[i], 1);
-		if (array[i] != '\n' && array[i] != '\0')
-			i++;
-		else
+		printf("%i", array[i]);
+		if (array[i] == '\n')
 			(*y)++;
+		if (array[i] != '\n')
+			i++;
 	}
-	*x = (i + 1) / *y;
+	*x = (i) / ((*y) + 1);
+	printf("\n%i\n", *x);
+	printf("%i\n", *y);
+
 	return (array);
 }
 
 int	main(int ac, char **argv)
 {
-	FILE	*fd;
+	FILE	*fp;
 	int		*array;
 	int		y;
 	int		x;
 
 	array = NULL;
+	fp = NULL;
+	y = 0;
+	x = 0;
 	if (ac == 2)
 	{
-		fd = fopen (argv[1], O_RDONLY);
-		array = fill_array(fd, &x, &y);
+		fp = fopen (argv[1], "r");
+		if (!fp)
+			return (0);
+		array = fill_array(fp, &x, &y);
 	}
 	//algorithm(array);
 	return (free(array), 0);
