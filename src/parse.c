@@ -28,7 +28,7 @@ int	*fill_array(FILE *fp, int *x, int *y)
 		if (array[i] != '\n')
 			i++;
 	}
-	*x = (i) / ((*y) + 1);
+	*x = (i) / ((*y));
 	printf("\n%i\n", *x);
 	printf("%i\n", *y);
 
