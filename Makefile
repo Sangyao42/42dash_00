@@ -1,12 +1,12 @@
-NAME = dash
+NAME = bsq
 CC = cc
 CFLAGS =  -Wall -Werror -Wextra
-# CFLAGS += -fsanitize=address -g3
+CFLAGS += -fsanitize=address -g3
 # TEST_DIR = ./spec/
 SRC_DIR = src/
 OBJ_DIR = obj/
 
-SRCS = main.c
+SRCS = parse.c
 
 OBJS = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 HEADER = -I ./include
