@@ -6,7 +6,9 @@ CFLAGS += -fsanitize=address -g3
 SRC_DIR = src/
 OBJ_DIR = obj/
 
-SRCS = parse.c
+SRCS = main.c \
+		parse.c \
+		find_square.c
 
 OBJS = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 HEADER = -I ./include
