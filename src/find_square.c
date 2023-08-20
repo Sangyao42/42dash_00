@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 13:36:08 by sawang            #+#    #+#             */
-/*   Updated: 2023/08/20 15:52:43 by sawang           ###   ########.fr       */
+/*   Updated: 2023/08/20 16:53:48 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	find_square(int *arr, int width, int height)
 	int	max_of_s = arr[0];
 	int	max_of_s_i = 0;
 	int	max_of_s_j = 0;
-	
+
 	int	i = 1;
 	while (i < height)
 	{
@@ -53,6 +53,6 @@ void	find_square(int *arr, int width, int height)
 		}
 		i++;
 	}
-	printf("{%d},{%d}|{%d},{%d}\n", max_of_s_i - max_of_s + 1, max_of_s_j - max_of_s + 1, max_of_s_i, max_of_s_j);
+	printf("%d,%d|%d,%d\n", max_of_s_i - max_of_s + 1, max_of_s_j - max_of_s + 1, max_of_s_i, max_of_s_j);
 	return ;
 }
