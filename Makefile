@@ -1,7 +1,8 @@
 NAME = bsq
 CC = cc
 CFLAGS =  -Wall -Werror -Wextra
-CFLAGS += -fsanitize=address -g3
+# CFLAGS += -fsanitize=address -g3
+# CFLAGS += -O3
 # TEST_DIR = ./spec/
 SRC_DIR = src/
 OBJ_DIR = obj/
