@@ -1,4 +1,4 @@
-NAME = dash
+NAME = bsq
 CC = cc
 CFLAGS =  -Wall -Werror -Wextra
 # CFLAGS += -fsanitize=address -g3
@@ -6,7 +6,8 @@ CFLAGS =  -Wall -Werror -Wextra
 SRC_DIR = src/
 OBJ_DIR = obj/
 
-SRCS = main.c
+SRCS = main.c \
+		find_square.c
 
 OBJS = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 HEADER = -I ./include
