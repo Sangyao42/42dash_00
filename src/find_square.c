@@ -33,21 +33,34 @@ void	find_square(int *arr, int width, int height)
 	int i;
 	int j;
 
-	i = 1;
+	i = 0;
 	while (i < height)
 	{
-		j = 1;
+		j = 0;
 		while (j < width)
 		{
 			if (arr[i * width + j] == 1)
 			{
-				arr[i * width + j] = \
-					min(arr[(i - 1) * width + j], arr[i * width + j - 1], arr[(i - 1) * width + j - 1]) + 1;
-				if (arr[i * width + j] > max_of_s)
+				if (i == 0 || j == 0 )
 				{
-					max_of_s = arr[i * width + j];
-					max_of_s_i = i;
-					max_of_s_j = j;
+					if (arr[i * width + j] > max_of_s)
+					{
+						max_of_s = arr[i * width + j];
+						max_of_s_i = i;
+						max_of_s_j = j;
+					}
+				}
+				else
+				{
+					arr[i * width + j] = \
+						min(arr[(i - 1) * width + j], arr[i * width + j - 1], arr[(i - 1) * width + j - 1]) + 1;
+					if (arr[i * width + j] > max_of_s)
+					{
+						max_of_s = arr[i * width + j];
+						max_of_s_i = i;
+						max_of_s_j = j;
+					}
+
 				}
 			}
 			else
@@ -57,43 +70,7 @@ void	find_square(int *arr, int width, int height)
 		i++;
 	}
 	if (max_of_s == 0)
-	{
-		i = 0;
-		while (i < height)
-		{
-			j = 0;
-			while (j < width)
-			{
-				if (arr[i * width + j] == 1)
-				{
-					max_of_s = 1;
-					break ;
-				}
-				j++;
-			}
-			i++;
-		}
-		if (max_of_s == 0)
-			return ;
-	}
-	if (max_of_s == 1)
-	{
-		i = 0;
-		while (i < height)
-		{
-			j = 0;
-			while (j < width)
-			{
-				if (arr[i * width + j] == 1)
-				{
-					printf("%d,%d|%d,%d\n", i, j, i, j);
-					return ;
-				}
-				j++;
-			}
-			i++;
-		}
-	}
+		return ;
 	printf("%d,%d|%d,%d\n", max_of_s_i - max_of_s + 1, max_of_s_j - max_of_s + 1, max_of_s_i, max_of_s_j);
 	return ;
 }
