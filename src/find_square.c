@@ -32,6 +32,7 @@ void	find_square(int *arr, int width, int height)
 
 	int i;
 	int j;
+	int index;
 
 	i = 0;
 	while (i < height)
@@ -39,32 +40,21 @@ void	find_square(int *arr, int width, int height)
 		j = 0;
 		while (j < width)
 		{
-			if (arr[i * width + j] == 1)
+			index = i * width + j;
+			if (arr[index] == 1)
 			{
-				if (i == 0 || j == 0 )
+				if (i != 0 && j != 0 )
+					arr[index] = \
+						min(arr[index - width], arr[index - 1], arr[index - width - 1]) + 1;
+				if (arr[index] > max_of_s)
 				{
-					if (arr[i * width + j] > max_of_s)
-					{
-						max_of_s = arr[i * width + j];
-						max_of_s_i = i;
-						max_of_s_j = j;
-					}
-				}
-				else
-				{
-					arr[i * width + j] = \
-						min(arr[(i - 1) * width + j], arr[i * width + j - 1], arr[(i - 1) * width + j - 1]) + 1;
-					if (arr[i * width + j] > max_of_s)
-					{
-						max_of_s = arr[i * width + j];
-						max_of_s_i = i;
-						max_of_s_j = j;
-					}
-
+					max_of_s = arr[index];
+					max_of_s_i = i;
+					max_of_s_j = j;
 				}
 			}
-			else
-				arr[i * width + j] = 0;
+			// else
+			// 	arr[i * width + j] = 0;
 			j++;
 		}
 		i++;
